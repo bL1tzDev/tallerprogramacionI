@@ -1,0 +1,252 @@
+*{
+    box-sizing: border-box;
+}
+
+html,body{
+    height: 100%;
+
+}
+
+body{
+    background-color: #ffffff;
+    background-image:  radial-gradient(#02010025 1.4500000000000002px, transparent 1.4500000000000002px), radial-gradient(#02010025 1.4500000000000002px, #d9d1ba38 1.4500000000000002px);
+    background-size: 58px 58px;
+    background-position: 0 0,29px 29px;
+}
+
+.principal h1,h2{
+  font-family: 'Red Hat Display', sans-serif;
+}
+.cs-destacado{
+    font-family: 'Arvo', serif;
+    margin: 2rem;
+}
+
+
+.navbar{
+  font-size: 1.3rem;
+  font-family: 'Source Serif Pro', serif;
+  font-weight: 200;
+background-color: #E7E7E4; 
+}
+
+.modal-content{
+  font-family: 'Red Hat Display', sans-serif;
+}
+
+.modal-content h1{
+  font-size: 24px ;
+}
+.modal-content label,p{
+    font-size: 18px;
+}
+
+
+/*----- Terminos y condiciones-------*/
+
+.cs-terms{
+  background-color: #fdfffc;
+  text-align: justify;
+  box-shadow: 0px -5px 33px #21232669;
+}
+
+.cs-terms h1{
+  margin: 1rem 0px 1rem 0px;
+  font-family: 'Anuphan', sans-serif;
+  font-weight: 700;
+
+}
+.cs-terms h2{
+ 
+  font-family: 'Anuphan', sans-serif;
+  font-weight: 400;
+}
+
+.cs-terms p{
+  
+  font-family: 'Schibsted Grotesk', sans-serif;
+}
+
+/* ----- Fin de Terminos y condiciones ------*/
+
+.logo{
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 700;
+}
+
+.logo-md p{
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 700;
+}
+
+.logo img{
+  max-width: 3rem;
+}
+
+/* Card */ 
+
+.cs-cards{
+  justify-content: center;
+  
+}
+
+.text-decoration-line-through{
+  color: #fa1a1ab7;
+}
+
+.card{
+  padding: 0px;
+  width: 18rem;
+  box-shadow: 4px 32px 105px -50px rgba(0,0,0,0.75);
+  transition: all .3s ease;
+}
+
+
+.card .btn{
+  margin-top: 1rem;
+  width: 49%;
+}
+
+.card:hover{
+  transform: scale(1.12);
+  box-shadow: -1px 71px 63px -33px #6c757d64;
+}
+
+/* Fin Card */
+
+/* Categorias card */
+
+.cat-card {
+  display: block;
+  position: relative;
+}
+
+.cat-btn{
+  padding: 16px 48px;
+  background: none;
+  border: 2px solid #131313;
+  color: #131313;
+  font-size: 20px;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.3s ease-in-out;
+}
+
+.cat-btn::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 100%;
+  background-color: #151515;
+  top: 0;
+  left: 0;
+  transition: width 0.3s ease-in-out;
+  z-index: -1;
+}
+
+.cat-btn:hover::before {
+  width: 100%;
+}
+
+.cat-btn:hover {
+  color: #fff;
+}
+
+.cat-card a{
+  position: relative;
+  top: -49%;
+  z-index: 1000;
+
+}
+
+.cat-card img{
+  background-color: #131313;
+  opacity: 0.7;
+  transition: all 1.2s ease ;
+}
+.cat-card figure{
+  overflow: hidden;
+
+}
+
+.cat-card img:hover{
+    transform: scale(1.2);
+}
+
+
+
+/* Banner */
+
+.cs-banner{
+  background-color: #E7E7E4;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  min-height: 8.4rem;
+  font-size: 24px;
+}
+
+.cs-banner svg{
+ 
+  margin-right: .5rem;
+}
+
+.cs-teams-banner{
+  background-color: #E7E7E4;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.cs-teams-banner img{
+  max-width: 15rem;
+}
+
+/* Sobre nosotros */
+
+.cs-nosotros h1{
+  font-family: 'Red Hat Display', sans-serif;
+}
+
+
+.cs-pagos {
+  display: flex;
+  justify-content: center;
+}
+
+.cs-pagos img {
+  margin: 2px;
+}
+
+/*Product review*/
+.cs-productRevContainer{
+  padding: 1.3rem;
+}
+
+.cs-productReview {
+  max-width: calc(100vh - 65px);
+ 
+}
+
+
+.cs-MapContainer{
+  min-width: 80vw;
+}
+/*footer*/
+
+footer{
+  background-color: #1d1e1e;
+  color: #ffffffff;
+}
+
+
+footer a{
+  color: #a3a3a3;
+}
+
+
+
+.ft-copyright{
+  padding: 1rem;
+}
+
