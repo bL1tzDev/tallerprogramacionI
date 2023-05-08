@@ -142,12 +142,32 @@
                     </div>
                     <div class="mb-3">
                         <label for="registerInputEmail1" class="form-label">Dirección de email</label>
-                        <input type="email" class="form-control" id="registerInputEmail1" aria-describedby="emailHelp">
+                        <input type="" class="" id="" ="">
+
+                    <?php 
+                    $data = array(
+                      'type'  => 'email',
+                      'aria-describedby'  => 'emailHelp',
+                      'id'    => 'registerInputEmail1',
+                      'placeholder' => 'email@dominio.com',
+                      'class' => 'form-control',
+                    );
+                    echo form_input($data);?>
+                        
                     </div>
                     <div class="mb-3">
                         <label for="registerInputPassword1" class="form-label">Contraseña</label>
                         
-                        <input type="password" class="form-control" id="registerInputPassword1">
+
+                    <?php 
+                    $data = array(
+                      'type'  => 'password',
+                      'name'  => 'pass',
+                      'id'    => 'registerInputPassword1',
+                      'placeholder' => 'Password',
+                      'class' => 'form-control',
+                    );
+                    echo form_input($data);?>
                         
                     </div>
                     <div class="col-auto">
@@ -156,7 +176,15 @@
                       </span>
                     </div>
                     
-                    <button type="submit" class="mt-4 btn btn-primary ms-auto">Registrarse</button>
+                    
+
+                    <?php 
+                      $data = array(
+                        'type'  => 'submit',
+                        'value' => 'Registrarse',
+                        'class' => 'mt-4 btn btn-primary ms-auto'
+                      );
+                      echo form_submit($data);?>
                     <?php echo form_close();?>
             </div>
             </div>
