@@ -140,9 +140,10 @@
                         echo form_input($data);?>
                         
                     </div>
+                    
                     <div class="mb-3">
                         <label for="registerInputEmail1" class="form-label">Dirección de email</label>
-                        <input type="" class="" id="" ="">
+
 
                     <?php 
                     $data = array(
