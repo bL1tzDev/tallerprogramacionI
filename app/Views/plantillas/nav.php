@@ -80,15 +80,14 @@
                   <div class="form-floating">
 
                     <?php 
-
                     $data = array(
-                      'type'  => 'password',
                       'name'  => 'pass',
                       'id'    => 'floatingPassword',
                       'placeholder' => 'Password',
                       'class' => 'form-control',
                     );
-                    echo form_input($data);?>
+                    echo form_password($data);?>
+                    
                       <div class="valid-feedback">
                         Looks good!
                       </div>
@@ -129,12 +128,29 @@
 
                 <?php echo form_open('register');?>
                     <div class="mb-3">
-                        <label for="registerInputNombre" class="form-label">Nombre completo:</label>
+                        <label for="registerInputNombre" class="form-label">Nombre:</label>
                         <?php 
 
                         $data = array(
+                          'name' => 'nombre',
                           'type'  => 'text',
                           'id' => 'registerInputNombre',
+                          'placeholder' => 'Nombre',
+                          'class' => 'form-control'
+                        );
+                        echo form_input($data);?>
+                        
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="registerInputApellido" class="form-label">Apellido:</label>
+                        <?php 
+
+                        $data = array(
+                          'name' => 'apellido',
+                          'type'  => 'text',
+                          'id' => 'registerInputApellido',
+                          'placeholder' => 'Apellido',
                           'class' => 'form-control'
                         );
                         echo form_input($data);?>
@@ -162,15 +178,30 @@
 
                     <?php 
                     $data = array(
-                      'type'  => 'password',
                       'name'  => 'pass',
                       'id'    => 'registerInputPassword1',
-                      'placeholder' => 'Password',
+                      'placeholder' => 'Contraseña',
                       'class' => 'form-control',
                     );
-                    echo form_input($data);?>
+                    echo form_password($data);?>
                         
                     </div>
+
+                    <div class="mb-3">
+                        <label for="registerInputPassword2" class="form-label">Contraseña</label>
+                        
+
+                    <?php 
+                    $data = array(
+                      'name'  => 'repass',
+                      'id'    => 'registerInputPassword2',
+                      'placeholder' => 'Contraseña',
+                      'class' => 'form-control',
+                    );
+                    echo form_password($data);?>
+                        
+                    </div>
+
                     <div class="col-auto">
                       <span id="passwordHelpInline" class="form-text">
                         La contraseña debe tener al menos ocho caracteres y una mayuscula.
