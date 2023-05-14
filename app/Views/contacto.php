@@ -20,30 +20,34 @@
 
             <section class="col">
                     <h2>Formulario de contacto</h2>
-                <div class="mb-3">
-                    <label for="inputNombreContactForm" class="form-label">Nombre Completo</label>
-                    <input type="text" class="form-control" id="inputNombreContactForm" placeholder="Nombre Completo">
-                </div>
+                    <?php
+                    $attributes = ['class' => 'needs-validation'];
+                     echo form_open('formulario_contacto',$attributes);?>
+                            <div class="mb-3">
+                                <label for="inputNombreContactForm" class="form-label">Nombre Completo</label>
+                                <input type="text" name="nombre" class="form-control" id="inputNombreContactForm" placeholder="Nombre Completo" required>
+                            </div>
 
-                <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Numero telefonico de contacto</label>
-                    <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Numero de telefono">
-                </div>
+                            <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label">Numero telefonico de contacto</label>
+                                <input type="number" name="telefono" class="form-control" id="exampleFormControlInput1" placeholder="Numero de telefono" required>
+                            </div>
 
-                <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Direccion de email</label>
-                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-                </div>
-                <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Motivo de consulta</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Motivo">
-                </div>
-                <div class="my-3">
-                    <label for="exampleFormControlTextarea1" class="form-label">Consulta</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary ">Enviar</button>
-            </div>
+                            <div class="mb-3">
+                                <label for="exampleFormControlInput2" class="form-label">Direccion de email</label>
+                                <input type="email" name="email" class="form-control" id="exampleFormControlInput2" placeholder="name@example.com" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleFormControlInput4" class="form-label">Motivo de consulta</label>
+                                <input type="text" name="motivo" class="form-control" id="exampleFormControlInput4" placeholder="Motivo" required>
+                            </div>
+                            <div class="my-3">
+                                <label for="exampleFormControlTextarea3" class="form-label">Consulta</label>
+                                <textarea class="form-control" name="consulta" id="exampleFormControlTextarea3" rows="4"></textarea required>
+                            </div>
+                            <button type="submit" class="btn btn-primary ">Enviar</button>
+                        </div>
+                        <?php echo form_close();?>
 
             </section>
 

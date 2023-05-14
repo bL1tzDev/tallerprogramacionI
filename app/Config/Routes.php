@@ -37,6 +37,8 @@ $routes->get('/products', 'Home::catalogo');
 $routes->get('/contact-us', 'Home::contacto');
 $routes->get('/product', 'Home::productoReview');
 
+$routes->post('formulario_contacto','UserController::registrarConsulta');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
