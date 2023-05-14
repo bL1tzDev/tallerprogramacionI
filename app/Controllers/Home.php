@@ -63,5 +63,13 @@ class Home extends BaseController
         echo view('plantillas\footer');
     }
 
+    public function iniciarsesion(){
+        $data['titulo'] = 'Iniciar sesion';
+        echo view('plantillas\head',$data);
+        echo view('plantillas\nav');
+        echo view('login');
+        echo view('plantillas\footer');
+    }
+
 
 }

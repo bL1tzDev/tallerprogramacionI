@@ -24,8 +24,19 @@
                     $attributes = ['class' => 'needs-validation'];
                      echo form_open('formulario_contacto',$attributes);?>
                             <div class="mb-3">
+                                
+                            <?php if (! empty($errors)): ?>
+                                <div class="alert alert-danger my-3" role="alert">
+                                    <ul>
+                                    <?php foreach ($errors as $error): ?>
+                                        <li><?= esc($error) ?></li>
+                                    <?php endforeach ?>
+                                    </ul>
+                                </div>
+                            <?php endif ?>
+                            
                                 <label for="inputNombreContactForm" class="form-label">Nombre Completo</label>
-                                <input type="text" name="nombre" class="form-control" id="inputNombreContactForm" placeholder="Nombre Completo" required>
+                                <input type="text" name="nombre" class="form-control" id="inputNombreContactForm" placeholder="Nombre Completo" >
                             </div>
 
                             <div class="mb-3">
@@ -48,6 +59,18 @@
                             <button type="submit" class="btn btn-primary ">Enviar</button>
                         </div>
                         <?php echo form_close();?>
+
+                      
+
+                        <div class="toast align-items-center text-bg-primary border-0" role="alert" aria-live="assertive" aria-atomic="true">
+                            <div class="d-flex">
+                                <div class="toast-body">
+                                Hello, world! This is a toast message.
+                                </div>
+                                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                            </div>
+                        </div>
+                        
 
             </section>
 

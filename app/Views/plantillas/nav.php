@@ -42,9 +42,9 @@
             <i class="bi bi-person-circle"></i> Cuenta
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Iniciar sesion</a></li>
+              <li><a class="dropdown-item" id="login-btn" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Iniciar sesion</a></li>
               <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#registerModal">Registrarse</a></li>
+              <li><a class="dropdown-item" id="register-btn"href="#" data-bs-toggle="modal" data-bs-target="#registerModal">Registrarse</a></li>
             </ul>
           </li>
       </ul>
@@ -117,6 +117,7 @@
 </nav>
 
         <!-- register Modal -->
+              
         <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -126,7 +127,25 @@
             </div>
             <div class="modal-body">
 
-                <?php echo form_open('register');?>
+            <?php if (! empty($errors)): ?>
+              <script defer>
+                
+                setTimeout(function(){
+                    const registerModal = document.getElementById('register-btn');
+
+                    registerModal.click();
+                }, 200);
+              </script>
+                                <div class="alert alert-danger my-3" role="alert">
+                                    <ul>
+                                    <?php foreach ($errors as $error): ?>
+                                        <li><?= esc($error) ?></li>
+                                    <?php endforeach ?>
+                                    </ul>
+                                </div>
+                            <?php endif ?>
+
+                <?php echo form_open('registrar_usuario');?>
                     <div class="mb-3">
                         <label for="registerInputNombre" class="form-label">Nombre:</label>
                         <?php 
@@ -164,6 +183,7 @@
                     <?php 
                     $data = array(
                       'type'  => 'email',
+                      'name' => 'email',
                       'aria-describedby'  => 'emailHelp',
                       'id'    => 'registerInputEmail1',
                       'placeholder' => 'email@dominio.com',

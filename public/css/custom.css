@@ -232,6 +232,11 @@ background-color: #E7E7E4;
 .cs-MapContainer{
   min-width: 80vw;
 }
+
+
+.login-fm{
+  max-width: 300px;
+}
 /*footer*/
 
 footer{

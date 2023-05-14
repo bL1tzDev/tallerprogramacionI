@@ -36,9 +36,10 @@ $routes->get('/comerc', 'Home::comercializacion');
 $routes->get('/products', 'Home::catalogo');
 $routes->get('/contact-us', 'Home::contacto');
 $routes->get('/product', 'Home::productoReview');
+$routes->get('/login', 'Home::iniciarsesion');
 
 $routes->post('formulario_contacto','UserController::registrarConsulta');
-
+$routes->post('registrar_usuario','UserController::registrarUsuario');
 /*
  * --------------------------------------------------------------------
  * Additional Routing
