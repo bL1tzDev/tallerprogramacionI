@@ -44,7 +44,7 @@
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" id="login-btn" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Iniciar sesion</a></li>
               <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" id="register-btn"href="#" data-bs-toggle="modal" data-bs-target="#registerModal">Registrarse</a></li>
+              <li><a class="dropdown-item" id="register-btn"href="/" data-bs-toggle="modal" data-bs-target="#registerModal">Registrarse</a></li>
             </ul>
           </li>
       </ul>
@@ -127,7 +127,7 @@
             </div>
             <div class="modal-body">
 
-            <?php if (! empty($errors)): ?>
+            <?php if (!empty($errors)  &&(current_url() == base_url("/registrar_usuario")) ): ?>
               <script defer>
                 
                 setTimeout(function(){

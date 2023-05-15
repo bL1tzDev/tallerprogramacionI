@@ -1,0 +1,11 @@
+CRITICAL - 2023-05-15 00:22:35 --> Undefined variable $errores
+in APPPATH\Views\plantillas\nav.php on line 141.
+ 1 APPPATH\Views\plantillas\nav.php(141): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $errores', 'C:\\xampp\\htdocs\\ci_2023_DominguezAnibal\\app\\Views\\plantillas\\nav.php', 141)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\ci_2023_DominguezAnibal\\app\\Views\\plantillas\\nav.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('plantillas\\nav', [], true)
+ 5 APPPATH\Controllers\UserController.php(46): view('plantillas\\nav')
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\UserController->registrarConsulta()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()

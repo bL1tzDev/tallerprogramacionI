@@ -25,7 +25,11 @@
                      echo form_open('formulario_contacto',$attributes);?>
                             <div class="mb-3">
                                 
-                            <?php if (! empty($errors)): ?>
+                            <?php 
+                            
+                            
+                            
+                            if (! empty($errors)): ?>
                                 <div class="alert alert-danger my-3" role="alert">
                                     <ul>
                                     <?php foreach ($errors as $error): ?>
