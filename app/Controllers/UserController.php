@@ -75,7 +75,7 @@ class UserController extends BaseController{
 
                 $registro_usuario->insert($datos);
 
-                return redirect()->to('/');
+                return redirect()->to('/')->with('msg','Registrado con exito.');
 
             } else {
               //  $data['errors'] = $validation->getErrors();
