@@ -3,6 +3,27 @@
     
 <main class="principal">
 
+<div style="z-index:11000;"class="position-absolute top-30 start-50 translate-middle toast text-bg-primary bg-success align-items-center fade hide " role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body">
+      <i class="bi bi-check-circle me-2"></i> <?=session('msg')?>
+      </div>
+      <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+  </div>
+
+  <?php if (session('msg')){ ?>
+
+    <script defer>
+        
+        setTimeout(function(){
+            let myAlert = document.querySelector('.toast');
+            let bsAlert = new bootstrap.Toast(myAlert);
+            bsAlert.show();
+        },300);
+    </script>
+
+    <?php }?>
 <!--Carousel-->
 
     <section class="container-fliud ">

@@ -12,9 +12,9 @@ class RegistroModel extends Model
     protected $useAutoIncrement = true;
 
     protected $returnType     = 'array';
-    protected $useSoftDeletes = true;
+    protected $useSoftDeletes = false;
 
-    protected $allowedFields = ['nombre_usuario','apellido_usuario', 'email_usuario','contrasena_usuario','estado_usuario'];
+    protected $allowedFields = ['nombre_usuario','apellido_usuario', 'email_usuario','contrasena_usuario','estado_usuario','id_perfil'];
 
     // Dates
     protected $useTimestamps = false;

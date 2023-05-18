@@ -45,7 +45,7 @@
 
             <?php if (session('login')) {?>
 
-                <li><a class="dropdown-item" href="#"><?php echo session('nombre').' '.session('apellido')?></a></li>
+                <li><a class="dropdown-item" href="#"><?php echo session('nombre').session('apellido')?></a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="<?php echo base_url('logout')?>">Cerrar sesesion</a></li>
 
@@ -71,29 +71,6 @@
             </div>
             <div class="modal-body">
 
-            <?php if (session('login_error')): ?>
-              <script defer>
-                
-                setTimeout(function(){
-                    const loginModal = document.getElementById('login-btn');
-                    const loginInputs = document.querySelectorAll('.loginInput');
-
-                      loginInputs.forEach((element) => {
-
-                        if (element.value === ''){
-                          element.classList.add('is-invalid');
-                        } 
-                      
-                      });
-
-                    loginModal.click();
-                  }, 200);
-              </script>
-                                <div class="alert alert-danger my-3" role="alert">
-                                    <p>Usuario y/o contraseña incorrectos</p>
-                                </div>
-                            <?php endif ?>
-
                 <?php echo form_open('iniciar_sesion');?>
                 
                   <div class="form-floating mb-3">
@@ -101,16 +78,14 @@
                     
                     $data = array(
                       'type'  => 'mail',
-                      'value' => old('email'),
                       'name'  => 'email',
                       'id'    => 'floatingInput',
                       'placeholder' => 'nombre@dominio.com',
-                      'class' => 'form-control loginInput'
+                      'class' => 'form-control'
                       );
                     
                     echo form_input($data) ?>
                     <label for="floatingInput">Direccion de email</label>
-                    
                   </div>
                   <div class="form-floating">
 
@@ -119,12 +94,18 @@
                       'name'  => 'pass',
                       'id'    => 'floatingPassword',
                       'placeholder' => 'Password',
-                      'class' => 'form-control loginInput',
+                      'class' => 'form-control',
                     );
                     echo form_password($data);?>
-                  
+                    
+                      <div class="valid-feedback">
+                        Looks good!
+                      </div>
+                      <div class="invalid-feedback">
+                        Please choose a username.
+                      </div>
+
                     <label for="floatingPassword">Contraseña</label>
-                  
                     <p class="mt-2">¿Olvidaste tu contraseña? <a href="#">Restablecer contraseña</a> </p>
                   </div>
                       
@@ -158,28 +139,21 @@
 
             
 
-            <?php if (session('register_error')): ?>
+            <?php if (!empty($errors)  &&(current_url() == base_url("/registrar_usuario")) ): ?>
               <script defer>
                 
                 setTimeout(function(){
                     const registerModal = document.getElementById('register-btn');
-                    const regInputs = document.querySelectorAll('.registerInput');
-
-                    regInputs.forEach((element) => {
-
-                      if (element.value === ''){
-                        element.classList.add('is-invalid');
-                      } else {
-                        element.classList.add('is-valid');
-                      }
-                    
-                    });
 
                     registerModal.click();
                 }, 200);
               </script>
                                 <div class="alert alert-danger my-3" role="alert">
-                                    <p>Debe completar los siguentes campos</p>
+                                    <ul>
+                                    <?php foreach ($errors as $error): ?>
+                                        <li><?= esc($error) ?></li>
+                                    <?php endforeach ?>
+                                    </ul>
                                 </div>
                             <?php endif ?>
 
@@ -190,15 +164,14 @@
 
                         $data = array(
                           'name' => 'nombre',
-                          'value' => old('nombre'),
                           'type'  => 'text',
                           'id' => 'registerInputNombre',
                           'placeholder' => 'Nombre',
-                          'class' => 'form-control registerInput'
+                          'class' => 'form-control is-invalid'
                         );
                         echo form_input($data);?>
 
-                        <p class="form-text text-danger"><?=session('register_error.nombre')?></p>
+                        <p class="form-text text-danger">a<?=session('errors.nombre')?></p>
                         
                     </div>
 
@@ -208,15 +181,12 @@
 
                         $data = array(
                           'name' => 'apellido',
-                          'value' => old('apellido'),
                           'type'  => 'text',
                           'id' => 'registerInputApellido',
                           'placeholder' => 'Apellido',
-                          'class' => 'form-control registerInput'
+                          'class' => 'form-control'
                         );
                         echo form_input($data);?>
-
-                        <p class="form-text text-danger"><?=session('register_error.apellido')?></p>
                         
                     </div>
                     
@@ -227,17 +197,13 @@
                     <?php 
                     $data = array(
                       'type'  => 'email',
-                      'value' => old('email'),
                       'name' => 'email',
+                      'aria-describedby'  => 'emailHelp',
                       'id'    => 'registerInputEmail1',
                       'placeholder' => 'email@dominio.com',
-                      'class' => 'form-control registerInput',
+                      'class' => 'form-control',
                     );
-
-                    
                     echo form_input($data);?>
-
-                      <p class="form-text text-danger"><?=session('register_error.email')?></p>
                         
                     </div>
                     <div class="mb-3">
@@ -249,27 +215,24 @@
                       'name'  => 'pass',
                       'id'    => 'registerInputPassword1',
                       'placeholder' => 'Contraseña',
-                      'class' => 'form-control registerInput',
+                      'class' => 'form-control',
                     );
                     echo form_password($data);?>
-                    <p class="form-text text-danger"><?=session('register_error.pass')?></p>
                         
                     </div>
 
                     <div class="mb-3">
                         <label for="registerInputPassword2" class="form-label">Contraseña</label>
-
+                        
 
                     <?php 
                     $data = array(
                       'name'  => 'repass',
                       'id'    => 'registerInputPassword2',
                       'placeholder' => 'Contraseña',
-                      'class' => 'form-control registerInput',
+                      'class' => 'form-control',
                     );
                     echo form_password($data);?>
-
-                      <p class="form-text text-danger"><?=session('register_error.repass')?></p>
                         
                     </div>
 

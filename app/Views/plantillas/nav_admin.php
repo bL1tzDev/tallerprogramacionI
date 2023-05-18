@@ -13,10 +13,10 @@
           <a class="nav-link" aria-current="page" href="<?php echo base_url("/");?>">Inicio</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<?php echo base_url("/#ofertas");?>">Ofertas</a>
+          <a class="nav-link" href="<?php echo base_url("/#ofertas");?>">Dashboard</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<?php echo base_url("/#destacado");?>">Destacado</a>
+          <a class="nav-link" href="<?php echo base_url("/#destacado");?>">Ventas</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -25,10 +25,10 @@
           <ul class="dropdown-menu ">
                 <li><a class="dropdown-item" href="<?php echo base_url("products");?>">Catalogo completo</a></li>
                   <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#">Remeras</a></li>
-                  <li><a class="dropdown-item" href="#">Buzos</a></li>
-                  <li><a class="dropdown-item" href="#">Camperas</a></li>
-                  <li><a class="dropdown-item" href="#">Pantalones</a></li>
+                  <li><a class="dropdown-item" href="#">Agregar Producto</a></li>
+                  <li><a class="dropdown-item" href="#">Stock</a></li>
+                  <li><a class="dropdown-item" href="#">Pedidos</a></li>
+                  <li><a class="dropdown-item" href="#">Clientes</a></li>
           </ul>
         </li>
       </ul>
@@ -45,7 +45,7 @@
 
             <?php if (session('login')) {?>
 
-                <li><a class="dropdown-item" href="#"><?php echo session('nombre').' '.session('apellido')?></a></li>
+                <li><a class="dropdown-item" href="#"><?php echo session('nombre').session('apellido')?></a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="<?php echo base_url('logout')?>">Cerrar sesesion</a></li>
 
