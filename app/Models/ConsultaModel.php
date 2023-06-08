@@ -12,9 +12,9 @@ class ConsultaModel extends Model
     protected $useAutoIncrement = true;
 
     protected $returnType     = 'array';
-    protected $useSoftDeletes = true;
+    protected $useSoftDeletes = false;
 
-    protected $allowedFields = ['nombre', 'mail','telefono','asunto','consulta'];
+    protected $allowedFields = ['nombre', 'mail','telefono','asunto','consulta','estado'];
 
     // Dates
     protected $useTimestamps = false;

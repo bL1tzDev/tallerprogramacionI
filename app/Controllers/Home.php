@@ -43,7 +43,12 @@ class Home extends BaseController
         $data['titulo'] = 'Productos';
         echo view('plantillas\head',$data);
         echo view('plantillas\nav');
-        echo view('catalogo');
+
+        $categoriaModel = model('App\Models\CategoriaModel');
+        $productoModel = model('App\Models\ProductoModel');
+
+        $data['productos'] = $productoModel->where('estado_producto', 0)->join('categorias', 'categorias.id_categoria = productos.id_categoria')->find();
+        echo view('catalogo',$data);
         echo view('plantillas\footer');
     }
 

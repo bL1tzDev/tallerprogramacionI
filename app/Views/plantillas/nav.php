@@ -35,17 +35,28 @@
 
       <ul class="navbar-nav ms-auto justify-content-center">
         <li class="nav-item">
-            <a class="nav-link disabled"><i class="bi bi-cart"></i></a>
+          <?php
+          if (session('login')){
+          $cart = Config\Services::cart();?>
+
+        <button title="Carrito" class="btn nav-link " data-bs-toggle="modal" data-bs-target="#cartModal"><i class="bi bi-cart"></i> <span style="font-size:14px;" class="nav-link badge text-bg-primary"><?php echo $cart->totalItems()?></span></button>
+          <?php }?>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="bi bi-person-circle"></i> Cuenta
+              <?php  if (session('login')){?>
+            <i class="bi bi-person-circle"></i><?php echo session('nombre').session('apellido')?>
+            <?php } else { ?>
+              <i class="bi bi-person-circle"></i> Cuenta
+              <?php }?>
             </a>
             <ul class="dropdown-menu">
 
             <?php if (session('login')) {?>
-
-                <li><a class="dropdown-item" href="#"><?php echo session('nombre').' '.session('apellido')?></a></li>
+                <?php if (session('perfil') == 2) {?>
+                <li><a class="dropdown-item" href="<?php echo base_url('admin')?>">Vista de admin</a></li>
+                <?php } ?>
+                <li><a class="dropdown-item" href="<?php echo base_url('misCompras')?>">Mis compras</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="<?php echo base_url('logout')?>">Cerrar sesesion</a></li>
 
@@ -87,7 +98,7 @@
                       });
 
                     loginModal.click();
-                  }, 200);
+                  }, 300);
               </script>
                                 <div class="alert alert-danger my-3" role="alert">
                                     <p>Usuario y/o contraseña incorrectos</p>
@@ -145,6 +156,29 @@
         </div>
 </nav>
 
+<!-- Notifications -->
+
+<div style="z-index:11000; transform: scale(1.40);"class="position-absolute top-30 start-50 translate-middle toast text-bg-primary bg-success align-items-center fade hide " role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body">
+      <i class="bi bi-check-circle me-2"></i> <?=session('msg')?>
+      </div>
+      <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+  </div>
+  <?php if (session('msg')){ ?>
+
+<script defer>
+    
+    setTimeout(function(){
+        let myAlert = document.querySelector('.toast');
+        let bsAlert = new bootstrap.Toast(myAlert);
+        bsAlert.show();
+    },300);
+</script>
+
+<?php }?>
+
         <!-- register Modal -->
               
         <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
@@ -160,13 +194,14 @@
 
             <?php if (session('register_error')): ?>
               <script defer>
-                
+
                 setTimeout(function(){
                     const registerModal = document.getElementById('register-btn');
                     const regInputs = document.querySelectorAll('.registerInput');
 
                     regInputs.forEach((element) => {
 
+                      
                       if (element.value === ''){
                         element.classList.add('is-invalid');
                       } else {
@@ -293,3 +328,72 @@
             </div>
         </div>
         </div>
+
+<!-- Cart Modal -->
+<div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="cartModalLabel">Carrito</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        
+      <?php $cart = Config\Services::cart();?>
+
+            <?php if ($cart->contents() == NULL) { ?>
+              <p class="text-center mt-2 fs-3 text-body-secondary"> <i class="bi bi-cart-x"></i> El carrito está vacio</p>
+            <?php } ?>
+
+            <?php if ($cart1 = $cart->contents()) { ?>
+
+              <table class="table table-bordred">
+
+              <thead>
+                <td>Item</td>
+                <td>Nombre</td>
+                <td>Precio</td>
+                <td>Cantidad</td>
+                <td>Subtotal</td>
+                <td>#</td>
+              </thead>
+
+              <tbody class="table-group-divider">
+              <?php 
+                $total = 0;
+                $i = 1;
+                foreach ($cart1 as $item): ?>
+                  <tr >
+                    <td><?php echo $i++;?></td>
+                    <td><?php echo $item['name']?></td>
+                    <td>$<?php echo $item['price'];?></td>
+                    <td><?php echo $item['qty'];?></td>
+                    <td>$<?php echo $item['qty'] * $item['price']; ?></td>
+                    <td><?php echo anchor('quitarItem/'.$item['rowid'],'<i class="bi bi-trash"></i> Eliminar',"class='text-decoration-none'")?></td>
+                  </tr>
+                  <?php endforeach;?>
+
+                  <tr class="table-group-divider">
+                    <td colspan='3'></td>
+                    <td class="mt-2"><b>Total</b></td>
+                    <td class="mt-2">$<?php echo $cart->total() ?></td>
+                    <td> <a class="text-decoration-none" href="<?php echo base_url('vaciarCarrito')?>"> <i class="bi bi-cart-dash"></i> Vaciar Carrito</a></a></td>
+                  </tr>
+
+              </tbody>
+              </table>
+
+
+              <?php  } ?>
+
+      </div>
+      <div class="modal-footer">
+        
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" >Seguir comprando</button>
+        <?php if ($cart->contents() != NULL ) {?>
+        <a  href="<?php echo base_url('#')?>"class="btn btn-success" >Realizar compra</a>
+        <?php }?>
+      </div>
+    </div>
+  </div>
+</div>

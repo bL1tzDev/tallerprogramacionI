@@ -3,27 +3,7 @@
     
 <main class="principal">
 
-<div style="z-index:11000;"class="position-absolute top-30 start-50 translate-middle toast text-bg-primary bg-success align-items-center fade hide " role="alert" aria-live="assertive" aria-atomic="true">
-    <div class="d-flex">
-      <div class="toast-body">
-      <i class="bi bi-check-circle me-2"></i> <?=session('msg')?>
-      </div>
-      <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-    </div>
-  </div>
 
-  <?php if (session('msg')){ ?>
-
-    <script defer>
-        
-        setTimeout(function(){
-            let myAlert = document.querySelector('.toast');
-            let bsAlert = new bootstrap.Toast(myAlert);
-            bsAlert.show();
-        },300);
-    </script>
-
-    <?php }?>
 <!--Carousel-->
 
     <section class="container-fliud ">
@@ -68,27 +48,33 @@
 
         <div class=" row row-cols-1 row-cols-sm-2 row-cols-md-4 cs-cards gap-4 ">
 
-        <div class="card" >
+        <div class="card h-100" >
             <a href="<?php echo base_url("/product");?>"><img src="public\images\products\remeras\nike-jordan\modelo-frente.jpg" class="card-img-top" alt="..."></a>
             <div class="card-body">
                         <h5 class="card-title">Remera Nike Jordan</h5>
+                        <div class="card-body">
                         <p class="card-text">$7.100</p>
-                 <a href="<?php echo base_url("/product");?>" class="btn btn-primary" >Ver</a>
-                <a href="#" class="btn btn-secondary disabled" >Comprar</a>
+                        <p class="card-text">$7.100</p>
+                        </div>
+                    <a href="<?php echo base_url("/product");?>" class="btn btn-primary" >Ver</a>
+                    <a href="#" class="btn btn-secondary disabled" >Comprar</a>
             </div>
         </div>
 
-            <div class="card" >
+            <div class="card h-100" >
                 <a href="<?php echo base_url("/product");?>"><img src="public\images\products\remeras\kotc-manifest\ed05b31e-306b-47d4-bd5d-9bf5df42d405-7a12846fe04c9d0c0016785611310276-640-0.webp" class="card-img-top" alt="..."></a>
                     <div class="card-body ">
                         <h5 class="card-title">Remera manifest</h5>
+                        
                         <p class="card-text">$6.500</p>
+                        <span class="badge rounded-pill text-bg-info">Info</span> <br>
                         <a href="<?php echo base_url("/product");?>" class="btn btn-primary" >Ver</a>
                         <a href="#" class="btn btn-secondary disabled" >Comprar</a>
+                        
                     </div>
             </div>
 
-            <div class="card" >
+            <div class="card h-100" >
                 <a href="<?php echo base_url("/product");?>"><img src="public\images\products\buzos\buzo-nike-rosa\test.jpg" class="card-img-top" alt="..."></a>
                     <div class="card-body">
                         <h5 class="card-title">Buzo Nike Rosa</h5>
@@ -98,7 +84,7 @@
                     </div>
             </div>
 
-            <div class="card" >
+            <div class="card h-100" >
                 <a href="<?php echo base_url("/product");?>"><img src="public\images\products\camperas\Nueva carpeta\campera-nikewhite.jpg" class="card-img-top" alt="..."></a>
                     <div class="card-body">
                         <h5 class="card-title">Campera nike white</h5>

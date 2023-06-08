@@ -27,7 +27,8 @@ class UserController extends BaseController{
                     'mail'=>$request->getPost('email'),  
                     'telefono'=>$request->getPost('telefono'),  
                     'asunto'=>$request->getPost('motivo'),
-                    'consulta'=>$request->getPost('consulta'),    
+                    'consulta'=>$request->getPost('consulta'),
+                    'estado' => 0  
                 
                 
             ];
@@ -36,10 +37,10 @@ class UserController extends BaseController{
 
                 $registroConsulta->insert($datos);
 
-                return redirect()->to('/')->with('Msg','Regisgistrado con exito.');
+                return redirect()->to('/contact-us')->with('msg','Consulta enviada!');
 
             } else {
-                $data['errors'] = $validation->getErrors();
+                return redirect()->back()->with('consulta_error',$validation->getErrors())->withInput();
             }
 
             $data['titulo'] = 'Error';
@@ -54,7 +55,7 @@ class UserController extends BaseController{
         $validation->setRules([
             'nombre'=>'required',
             'apellido'=>'required',
-            'email'=>'required|valid_email',
+            'email'=>'required|valid_email|is_unique[usuarios.email_usuario]',
             'pass'=>'required|min_length[8]',
             'repass'=>'required|min_length[8]|matches[pass]',]);
 
@@ -127,16 +128,16 @@ class UserController extends BaseController{
                         case '1': return redirect()->route('/')->with('msg','Sesion iniciada');//agregar mensaje
                         break;
 
-                        case '2': return redirect()->route('/');//agregar mensaje
+                        case '2': return redirect()->route('admin')->with('msg','Sesion iniciada como administrador');//agregar mensaje
                         break;
                     }
-                } else {  // verify if
-                    return redirect()->back()->with('login_error',$validation->getErrors())->withInput();
+                } else {  // password verify if
+                    return redirect()->back()->with('login_error','Usuario y/o contraseña incorrecto')->withInput();
                 }
         
             } else { // user if
-                return redirect()->route('/');
-                $session->setFlashdata('login_error','Usuario y/o contraseña incorrecto');
+                //return redirect()->route('/');
+                return redirect()->back()->with('login_error','Usuario y/o contraseña incorrecto');
             }
 
         } else { // validation if

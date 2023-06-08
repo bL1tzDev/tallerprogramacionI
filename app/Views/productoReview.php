@@ -9,14 +9,18 @@
                     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
                 </div>
                     <div class="carousel-inner ">
+                        <?php
+                            $categoria = $producto['categoria_descripcion'];
+                            $tituloProducto = $producto['titulo_producto'];
+                        ?>
                         <div class="carousel-item active">
-                        <img src="public\images\products\remeras\nike-jordan\modelo-frente.png" class="d-block w-100" alt="...">
+                        <img src="<?php echo base_url("public/images/products/$categoria/$tituloProducto/modelo_frente.webp?".rand(1,32000))?>" class="d-block w-100" style="max-height:100%;"alt="...">
                         </div>
                         <div class="carousel-item">
-                        <img src="public\images\products\remeras\nike-jordan\modelo-cerca.jpg" class="d-block w-100" alt="...">
+                        <img src="<?php echo base_url("public/images/products/$categoria/$tituloProducto/producto_frente.webp?".rand(1,32000))?>" class="d-block w-100" alt="...">
                         </div>
                         <div class="carousel-item">
-                        <img src="public\images\products\remeras\nike-jordan\modelo-espalda.jpg" class="d-block w-100" alt="...">
+                        <img src="<?php echo base_url("public/images/products/$categoria/$tituloProducto/producto_reverso.webp?".rand(1,32000))?>" class="d-block w-100" alt="...">
                         </div>
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
@@ -31,10 +35,10 @@
             </article>
 
             <article class="col"> 
-                <h1>Remera Nike jordan</h1>
+                <h1><?php echo $producto['titulo_producto'] ?></h1>
                 <hr>
 
-                <p class="fs-3"><strong>$7100</strong></p>
+                <p class="fs-3"><strong>$<?php echo $producto['precio_producto']?></strong></p>
                 <p>Talle:</p>
                 <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
                     <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" >
@@ -73,14 +77,7 @@
 
                 <h3>Descripcion</h3>
                 
-                    <ul> 
-                        <li> Material: Jersey 28/1. 100% Algodón. </li>
-                        <li>Color: Negro.</li>
-                        <li>Corte Holgado.</li>
-                        <li>Cuello: Redondo con ribb.</li>
-                        <li>Mangas cortas, ruedo clásico.</li>
-                        <li>Estampa serigrafiada frente y espalda.</li>
-                    </ul>
+                    <?php echo $producto['descripcion_producto']?>
                 <hr>
 
 

@@ -1,1 +1,0 @@
-__ci_last_regenerate|i:1684363637;_ci_previous_url|s:41:"http://localhost/ci_2023_DominguezAnibal/";errors|a:3:{s:6:"nombre";s:29:"The nombre field is required.";s:8:"apellido";s:31:"The apellido field is required.";s:6:"repass";s:29:"The repass field is required.";}__ci_vars|a:1:{s:6:"errors";s:3:"old";}

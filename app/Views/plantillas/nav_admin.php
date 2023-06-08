@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary ">
   <div class="container-fluid">
-    <a class="navbar-brand my-1" href="<?php echo base_url("/");?>">
-        <img src="public\images\icon.png" alt="Logo" width="30" height="30" class="logo d-inline-block ">
+    <a class="navbar-brand my-1" href="<?php echo base_url("admin");?>">
+        <img src="<?php echo base_url('public/images/icon.png')?>" alt="Logo" width="30" height="30" class="logo d-inline-block ">
         Clothing store
       </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -10,23 +10,23 @@
     <div class="collapse navbar-collapse " id="navbarNavDropdown">
       <ul class="navbar-nav ms-auto justify-content-center ">
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="<?php echo base_url("/");?>">Inicio</a>
+          <a class="nav-link" aria-current="page" href="<?php echo base_url("admin");?>">Inicio</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<?php echo base_url("/#ofertas");?>">Dashboard</a>
+          <a class="nav-link" href="<?php echo base_url("/consultas");?>"> Consultas <span style="font-size:14px;" class="pb-1 badge rounded-pill bg-danger"><?php  $noLeidos ?></span> </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<?php echo base_url("/#destacado");?>">Ventas</a>
+          <a class="nav-link" href="<?php echo base_url("/#destacado");?>">Ventas <span style="font-size:14px;" class="pb-1 badge rounded-pill text-bg-danger">+20</span></a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Productos
+          Administrar productos
           </a>
           <ul class="dropdown-menu ">
                 <li><a class="dropdown-item" href="<?php echo base_url("products");?>">Catalogo completo</a></li>
                   <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#">Agregar Producto</a></li>
-                  <li><a class="dropdown-item" href="#">Stock</a></li>
+                  <li><a class="dropdown-item" href="<?php echo base_url("agregarProducto");?>">Agregar Producto</a></li>
+                  <li><a class="dropdown-item" href="<?php echo base_url("listaProductos");?>">Listar productos</a></li>
                   <li><a class="dropdown-item" href="#">Pedidos</a></li>
                   <li><a class="dropdown-item" href="#">Clientes</a></li>
           </ul>
@@ -35,17 +35,17 @@
 
       <ul class="navbar-nav ms-auto justify-content-center">
         <li class="nav-item">
-            <a class="nav-link disabled"><i class="bi bi-cart"></i></a>
+        <a class="nav-link" title="Vista de usuario" href="<?php echo base_url("/");?>"><i class="bi bi-eye"></i></a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="bi bi-person-circle"></i> Cuenta
+            <i class="bi bi-person-circle"></i><?php echo session('nombre').session('apellido')?>
             </a>
             <ul class="dropdown-menu">
 
             <?php if (session('login')) {?>
 
-                <li><a class="dropdown-item" href="#"><?php echo session('nombre').session('apellido')?></a></li>
+                <li><a class="dropdown-item" href="<?php echo base_url('/')?>">Vista de usuario</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="<?php echo base_url('logout')?>">Cerrar sesesion</a></li>
 
@@ -144,6 +144,29 @@
         </div>
         </div>
 </nav>
+
+<!-- Notifications -->
+
+<div style="z-index:11000; transform: scale(1.40);"class="position-absolute top-30 start-50 translate-middle toast text-bg-primary bg-success align-items-center fade hide " role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body">
+      <i class="bi bi-check-circle me-2"></i> <?=session('msg')?>
+      </div>
+      <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+  </div>
+  <?php if (session('msg')){ ?>
+
+<script defer>
+    
+    setTimeout(function(){
+        let myAlert = document.querySelector('.toast');
+        let bsAlert = new bootstrap.Toast(myAlert);
+        bsAlert.show();
+    },300);
+</script>
+
+<?php }?>
 
         <!-- register Modal -->
               
@@ -293,3 +316,4 @@
             </div>
         </div>
         </div>
+

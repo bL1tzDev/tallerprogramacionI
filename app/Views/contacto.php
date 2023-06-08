@@ -29,52 +29,62 @@
                             
                             
                             
-                            if (! empty($errors)): ?>
+                            if (session('consulta_error')): ?>
                                 <div class="alert alert-danger my-3" role="alert">
-                                    <ul>
-                                    <?php foreach ($errors as $error): ?>
-                                        <li><?= esc($error) ?></li>
-                                    <?php endforeach ?>
-                                    </ul>
+                                    Debe completar los siguientes campos
                                 </div>
                             <?php endif ?>
                             
                                 <label for="inputNombreContactForm" class="form-label">Nombre Completo</label>
-                                <input type="text" name="nombre" class="form-control" id="inputNombreContactForm" placeholder="Nombre Completo" >
+                                <input type="text"
+                                    name="nombre" 
+                                    class="<?=session('consulta_error.nombre') ?'form-control is-invalid' :'form-control'?>"
+                                    id="inputNombreContactForm" 
+                                    placeholder="Nombre Completo"
+                                    value="<?=old('nombre')?>"
+                                   >
+                                   <p class="form-text text-danger"><?=session('consulta_error.nombre')?></p>
                             </div>
 
                             <div class="mb-3">
                                 <label for="exampleFormControlInput1" class="form-label">Numero telefonico de contacto</label>
-                                <input type="number" name="telefono" class="form-control" id="exampleFormControlInput1" placeholder="Numero de telefono" required>
+                                <input type="number"
+                                    name="telefono"
+                                    class="<?=session('consulta_error.telefono') ?'form-control is-invalid' :'form-control'?>"
+                                    id="exampleFormControlInput1" 
+                                    placeholder="Numero de telefono"
+                                    value="<?=old('telefono')?>" >
+                                    <p class="form-text text-danger"><?=session('consulta_error.telefono')?></p>
                             </div>
 
                             <div class="mb-3">
                                 <label for="exampleFormControlInput2" class="form-label">Direccion de email</label>
-                                <input type="email" name="email" class="form-control" id="exampleFormControlInput2" placeholder="name@example.com" required>
+                                <input type="email"
+                                    name="email" 
+                                    class="<?=session('consulta_error.email') ?'form-control is-invalid' :'form-control'?>" 
+                                    id="exampleFormControlInput2" 
+                                    placeholder="name@example.com"
+                                    value="<?=old('email')?>" >
+                                    <p class="form-text text-danger"><?=session('consulta_error.email')?></p>
                             </div>
                             <div class="mb-3">
                                 <label for="exampleFormControlInput4" class="form-label">Motivo de consulta</label>
-                                <input type="text" name="motivo" class="form-control" id="exampleFormControlInput4" placeholder="Motivo" required>
+                                <input type="text" 
+                                name="motivo" 
+                                class="<?=session('consulta_error.motivo') ?'form-control is-invalid' :'form-control'?>" 
+                                id="exampleFormControlInput4" 
+                                placeholder="Motivo" 
+                                value="<?=old('motivo')?>" >
+                                <p class="form-text text-danger"><?=session('consulta_error.motivo')?></p>
                             </div>
                             <div class="my-3">
                                 <label for="exampleFormControlTextarea3" class="form-label">Consulta</label>
-                                <textarea class="form-control" name="consulta" id="exampleFormControlTextarea3" rows="4"></textarea required>
+                                <textarea class="<?=session('consulta_error.consulta') ?'form-control is-invalid' :'form-control'?>" name="consulta" id="exampleFormControlTextarea3" rows="4"></textarea>
+                                <p class="form-text text-danger"><?=session('consulta_error.consulta')?></p>
                             </div>
                             <button type="submit" class="btn btn-primary ">Enviar</button>
                         </div>
                         <?php echo form_close();?>
-
-                      
-
-                        <div class="toast align-items-center text-bg-primary border-0" role="alert" aria-live="assertive" aria-atomic="true">
-                            <div class="d-flex">
-                                <div class="toast-body">
-                                Hello, world! This is a toast message.
-                                </div>
-                                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-                            </div>
-                        </div>
-                        
 
             </section>
 

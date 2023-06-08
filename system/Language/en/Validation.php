@@ -47,7 +47,8 @@ return [
     'not_in_list'           => 'The {field} field must not be one of: {param}.',
     'numeric'               => 'The {field} field must contain only numbers.',
     'regex_match'           => 'The {field} field is not in the correct format.',
-    'required'              => 'The {field} field is required.',
+    //'required'              => 'The {field} field is required.',
+    'required'              => 'Este campo es obligatorio.',
     'required_with'         => 'The {field} field is required when {param} is present.',
     'required_without'      => 'The {field} field is required when {param} is not present.',
     'string'                => 'The {field} field must be a valid string.',
@@ -65,9 +66,9 @@ return [
     'valid_cc_num' => '{field} does not appear to be a valid credit card number.',
 
     // Files
-    'uploaded' => '{field} is not a valid uploaded file.',
-    'max_size' => '{field} is too large of a file.',
-    'is_image' => '{field} is not a valid, uploaded image file.',
+    'uploaded' => '{field} El archivo no corresponde con las extenciones permitidas.',
+    'max_size' => '{field} Es una archivo demasiado grande.',
+    'is_image' => '{field} No es un archivo de imagen valido.',
     'mime_in'  => '{field} does not have a valid mime type.',
     'ext_in'   => '{field} does not have a valid file extension.',
     'max_dims' => '{field} is either not an image, or it is too wide or tall.',

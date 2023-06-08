@@ -29,6 +29,8 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
+
+//User routes
 $routes->get('/', 'Home::index');
 $routes->get('/terms', 'Home::terminos');
 $routes->get('/about', 'Home::nosotros');
@@ -36,13 +38,36 @@ $routes->get('/comerc', 'Home::comercializacion');
 $routes->get('/products', 'Home::catalogo');
 $routes->get('/contact-us', 'Home::contacto');
 $routes->get('/product', 'Home::productoReview');
-$routes->get('/login', 'Home::iniciarsesion');
+$routes->get('/login', 'Home::iniciarsesion');//quitar
+$routes->get('quitarItem/(:any)', 'cartController::removeItem/$1');
+$routes->get('producto/(:num)', 'productController::mostrarProducto/$1');
+$routes->get('vaciarCarrito', 'cartController::removeAll');
+
+//admin get routes
+
+$routes->get('/admin', 'AdminController::index');
+$routes->get('/agregarProducto', 'AdminController::nuevoProducto');
+$routes->get('consultas', 'AdminController::listarConsultas');
+$routes->get('listaProductos', 'AdminController::listarProductos');
+$routes->get('editarProducto/(:num)', 'ProductController::editarProducto/$1');
+$routes->get('actConsulta/(:num)','AdminController::actualizarEstadoConsulta/$1');
+
+
+//admin post routes
+
+$routes->post('actualizar_producto', 'ProductController::actualizarProducto');
+$routes->post('agregar_producto','ProductController::agregarProducto');
+
+
 $routes->get('/logout', 'UserController::cerrarSesion');
 
+
+//user post routes
 
 $routes->post('formulario_contacto','UserController::registrarConsulta');
 $routes->post('registrar_usuario','UserController::registrarUsuario');
 $routes->post('iniciar_sesion','UserController::inciarSesion');
+$routes->post('addToCart','cartController::addItem');
 
 /*
  * --------------------------------------------------------------------
